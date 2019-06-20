@@ -9,6 +9,10 @@ class User {
     _name = value.toUpperCase();
   }
 
+  get fullName() {
+    return `${_name}`;
+  }
+
   get balanceHistory() {
     return balances;
   }
