@@ -1,5 +1,10 @@
+interface IFlayingAnimal {
+  fly: () => {};
+  numberWings: number;
+}
+
 class Animal {
-  static myname;
+  public static readonly myname;
   constructor(public name: string) {}
 
   sayHi() {
@@ -11,29 +16,51 @@ class Animal {
   }
 }
 
-// console.log("Hola", Animal.myname);
+class Bird extends Animal implements IFlayingAnimal {
+  fly: () => {};
+  numberWings: number;
+  colot = "Black";
+}
 
-console.log(new Animal("Dog").sayHi());
+class Parrot extends Animal implements IFlayingAnimal {
+  fly: () => {};
+  numberWings: number;
+  age = 12;
+}
 
-// interface IMyResponse<T> {
-//   response: T;
-// }
+const animalShop = (typeAnimal): Parrot | Bird => {
+  if (typeAnimal == "Parrot") {
+    return new Parrot("Parrot");
+  } else if (typeAnimal == "Parrot") {
+    return new Bird("Bird");
+  }
+};
 
-// const myResponse = (callback: () => string): IMyResponse<string> => {
-//   return { response: callback() };
-// };
+const myanimal = animalShop("Parrot");
+if (myanimal instanceof Parrot) {
+  myanimal.age;
+}
 
-// const myResponseNumber = (callback: () => number): IMyResponse<number> => {
-//   return { response: callback() };
-// };
+// new Parrot("Parrot");
 
-// console.log(myResponse(() => "Hola"));
-// console.log(myResponseNumber(() => 12));
+// new Animal("Dog").name = "asdas";
 
-// Animal.myname = "Miguel";
+// // console.log("Hola", Animal.myname);
 
-// Animal.info();
+// console.log(new Animal("Dog").sayHi);
 
-// console.log("Hola", Animal.myname);
+// // const myResponse = (callback: () => {}) => {
+// //   return { response: callback() };
+// // };
 
-// console.log(new Animal("Dog").sayHi());
+// // console.log(myResponse(() => "Hola"));
+// // console.log(myResponse(() => 12));
+// // console.log(myResponse(() => new Animal("Cat")));
+
+// // Animal.myname = "Miguel";
+
+// // Animal.info();
+
+// // console.log("Hola", Animal.myname);
+
+// // console.log(new Animal("Dog").sayHi());
