@@ -14,11 +14,15 @@ class MyPromise {
   }
 
   reject(error) {
+    this.hasError = true;
+
     this.error = error;
   }
 
   then(cb) {
-    cb(this.value);
+    if (!this.hasError) {
+      cb(this.value);
+    }
     return this;
   }
 
@@ -32,7 +36,8 @@ class MyPromise {
 }
 
 const mypromise = new MyPromise((resolve, reject) => {
-  resolve(10);
+  reject(3);
+  // resolve(10);
 });
 
 mypromise
