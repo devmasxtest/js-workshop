@@ -1,43 +1,22 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "baseUrl": "./", // all paths are relative to the baseUrl
-    "paths": {
-      "@server/*": ["src/server/*"]
-    },
-    "declaration": false,
-    "noImplicitAny": false,
+    "declaration": true,
     "removeComments": true,
-    "noLib": false,
-    "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
-    "allowJs": true,
-    "allowUnreachableCode": false,
-    "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
-    "moduleResolution": "node",
-    "noImplicitReturns": true,
-    "noUnusedLocals": false,
-    "strictNullChecks": false,
-    "strict": false,
-    "suppressImplicitAnyIndexErrors": false,
     "target": "es6",
-    "lib": ["es5", "es6", "dom", "es2017"],
-    "outDir": "./dist"
+    "sourceMap": false,
+    "noImplicitAny": false,
+    "noLib": false,
+    "allowSyntheticDefaultImports": true,
+    "outDir": ".",
+    "baseUrl": "./"
   },
-  "include": ["src/**/*", "razzle.config.js", "apollo.config.js"],
   "exclude": [
     "node_modules",
-    "build",
-    "scripts",
-    "acceptance-tests",
-    "webpack",
-    "jest",
-    "razzle.config.js",
-    "**/*.spec.ts"
-  ],
-  "types": ["typePatches", "node", "webpack-env"]
+    "**/__tests__/*",
+    "**/__mocks__/*",
+    "examples/**/*"
+  ]
 }

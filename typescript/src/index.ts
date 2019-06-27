@@ -1,8 +1,11 @@
+// Store same class befere decorate
+let mytarget;
 const joinProp = (listProperties = []) =>
   function(target, key) {
     const getter = function() {
       return listProperties.map(it => this[it]).join(" ");
     };
+    mytarget = target;
     Object.defineProperty(target, key, {
       get: getter,
       set() {},
@@ -11,9 +14,15 @@ const joinProp = (listProperties = []) =>
   };
 
 const toStringProps = () => (target: any) => {
-  target.prototype.toString = function() {
-    return Object.getOwnPropertyNames(this).join(" ");
-  };
+  new Proxy(target, {
+    : function(target, key, descriptor) {
+      console.log("descriptor", descriptor);
+      target.prototype.toString = function() {
+        return Object.getOwnPropertyNames(this).join(" ");
+      };
+      return true;
+    }
+  });
   return target;
 };
 
